@@ -10,10 +10,10 @@ import java.io.IOException;
 class HandlePunchTest {
 
     @Autowired
-    handlePunch handlePunch;
+    HandlePunch handlePunch;
 
     @Test
     void handlePunch() throws IOException {
-        handlePunch.doHandlePunch();
+        handlePunch.handle();
     }
 }
