@@ -42,5 +42,4 @@ public class SeleniumUtil {
         WebElement loginButton = driver.findElement(By.className("login_box_landing_btn"));
         loginButton.click();
     }
-
 }

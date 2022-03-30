@@ -36,7 +36,7 @@ public class HandlePunch {
 
     private List<punchEnumTem> punchEnumTemList;
 
-    private void init(){
+    private void init() {
         punchEnumTemList = Stream.of(PunchEnum.values()).map(stu -> {
             StringBuilder builder = new StringBuilder(stu.body);
             updateTimeStamp(builder);
@@ -67,7 +67,7 @@ public class HandlePunch {
 
     @Getter
     @Builder
-    static class punchEnumTem{
+    static class punchEnumTem {
         private String body;
         private String url;
         private String cookie;
@@ -75,11 +75,11 @@ public class HandlePunch {
         private String password;
     }
 
-    @Scheduled(cron = "0 0 6 * * ?")
+    @Scheduled(cron = "0 0 10 * * ?")
     public void handle() throws IOException {
         init();
-        for (punchEnumTem tem:punchEnumTemList){
-            tem.cookie = seleniumUtil.getCookie(tem.userName,tem.password);
+        for (punchEnumTem tem : punchEnumTemList) {
+            tem.cookie = seleniumUtil.getCookie(tem.userName, tem.password);
             doHandle(tem);
         }
     }
@@ -107,6 +107,6 @@ public class HandlePunch {
                 .addHeader("Cookie", tem.cookie)
                 .build();
         Response response = client.newCall(request).execute();
-        log.info("code:{},message:您今天已经申请成功过一次，不可继续申请！",response.code());
+        log.info("code:{}", response.code());
     }
 }
