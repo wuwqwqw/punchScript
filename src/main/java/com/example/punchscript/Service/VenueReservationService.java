@@ -14,8 +14,8 @@ public class VenueReservationService {
     @Autowired
     AsyncService asyncService;
 
-    @Scheduled(cron = "0 0/25 * * * ?")
-    @Scheduled(cron = "50 59 6 31 12 ?")
+//    @Scheduled(cron = "0 0/25 * * * ?")
+//    @Scheduled(cron = "50 59 6 31 12 ?")
     public void handle() throws UnirestException, JsonProcessingException {
         ReservationInfo build = ReservationInfo.builder()
                 .placeId("1639988691662689")
